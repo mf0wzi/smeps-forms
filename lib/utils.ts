@@ -4,3 +4,8 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+// This check can be removed, it is just for tutorial purposes
+export function hasEnvVars(): boolean {
+  return !!(process.env.SUPABASE_URL && process.env.SUPABASE_ANON_KEY);
+}
