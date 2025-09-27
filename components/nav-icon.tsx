@@ -8,10 +8,10 @@ import {
 
 const iconMap: Record<IconId, React.ComponentType<React.ComponentProps<typeof IconDashboard>>> = {
   dashboard: IconDashboard,
-  lifecycle: IconListDetails,
+  forms: IconListDetails,
   analytics: IconChartBar,
   projects: IconFolder,
-  team: IconUsers,
+  users: IconUsers,
   settings: IconSettings,
   help: IconHelp,
   search: IconSearch,

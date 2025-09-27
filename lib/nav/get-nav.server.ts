@@ -19,10 +19,10 @@ function allow(item: NavItem, roles: string[]) {
 // ---------- Static config with literal types ----------
 const NAV_MAIN = [
   { title: "Dashboard", url: "/app",           iconId: "dashboard", minRole: "user" },
-  { title: "Lifecycle", url: "/app/lifecycle", iconId: "lifecycle", minRole: "manager" },
+  { title: "Forms", url: "/app/Forms", iconId: "forms", minRole: "user" },
   { title: "Analytics", url: "/app/analytics", iconId: "analytics", minRole: "user" },
   { title: "Projects",  url: "/app/projects",  iconId: "projects",  minRole: "user" },
-  { title: "Team",      url: "/app/team",      iconId: "team",      minRole: "manager" },
+  { title: "Users",      url: "/app/users",      iconId: "users",      minRole: "manager" },
 ] as const satisfies readonly NavItem[];
 
 const NAV_DOCS = [
@@ -32,7 +32,7 @@ const NAV_DOCS = [
 ] as const satisfies readonly NavItem[];
 
 const NAV_SECONDARY = [
-  { title: "Settings", url: "/app/settings", iconId: "settings" },
+  { title: "Settings", url: "/app/settings", iconId: "settings", minRole: "admin"},
   { title: "Get Help", url: "/app/help",     iconId: "help" },
   { title: "Search",   url: "/app/search",   iconId: "search" },
 ] as const satisfies readonly NavItem[];

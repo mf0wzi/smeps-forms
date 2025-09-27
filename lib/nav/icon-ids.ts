@@ -1,6 +1,6 @@
 // lib/nav/icon-ids.ts
 export const ICON_IDS = [
-  "dashboard","lifecycle","analytics","projects","team",
+  "dashboard","forms","analytics","projects","users",
   "settings","help","search","database","report","word",
 ] as const;
 export type IconId = typeof ICON_IDS[number];
