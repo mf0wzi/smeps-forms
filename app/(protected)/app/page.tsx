@@ -1,14 +1,11 @@
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
+import { createServerSupabase } from "@/lib/supabase/server";
 import { InfoIcon } from "lucide-react";
+import { requireClaims } from '@/lib/auth-guard'
 
 export default async function AppPage() {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase.auth.getClaims();
-  if (error || !data?.claims) {
-    redirect("/login");
-  }
+  const user = await requireClaims();
+  const tenantId = (user as any).tenantId;
 
   return (
     <div className="flex-1 w-full flex flex-col gap-12">
@@ -22,7 +19,7 @@ export default async function AppPage() {
       <div className="flex flex-col gap-2 items-start">
         <h2 className="font-bold text-2xl mb-4">Your user details</h2>
         <pre className="text-xs font-mono p-3 rounded border max-h-32 overflow-auto">
-          {JSON.stringify(data.claims, null, 2)}
+          {JSON.stringify(user, null, 2)}
         </pre>
       </div>
       <div>

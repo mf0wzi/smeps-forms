@@ -1,30 +1,14 @@
-// app/components/layout/MainLayout.tsx
-import React, { ReactNode } from "react";
-import  Navbar from "@/components/section/navbar";
-import { Hero } from "@/components/features/hero";
-import Footer from "@/components/section/footer";
-import { hasEnvVars } from "@/lib/utils";  // Import the hasEnvVars boolean
+// app/components/layouts/GuestLayout.tsx
+import type { ReactNode } from "react";
+import NavbarGuest from "@/components/section/navbar-guest";
+import Footer from "@/components/section/footer-guest";
 
-interface GuestLayoutProps {
-  children: ReactNode;
-}
-
-const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
-  const envVarsExist = hasEnvVars();  // Call the function to get the boolean value
-
+export default function GuestLayout({ children }: { children: ReactNode }) {
   return (
-    <main className="min-h-screen flex flex-col items-center">
-        <div className="flex-1 w-full flex flex-col gap-20 items-center">
-            <Navbar />
-            <div className="flex-1 flex flex-col gap-20 max-w-5xl p-5">
-                <main className="flex-1 flex flex-col gap-6 px-4">
-                    {children}
-                </main>
-            </div>
-            <Footer />
-        </div>
-    </main>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900">
+      <NavbarGuest />
+      <main className="w-full max-w-lg p-6">{children}</main>
+      <Footer />
+    </div>
   );
-};
-
-export default GuestLayout;
+}

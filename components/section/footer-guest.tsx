@@ -1,6 +1,5 @@
 // app/components/features/Navbar.tsx
 import React from "react";
-import Link from "next/link";
 import { ThemeSwitcher } from "@/components/features/theme-switcher";
 
 const Footer: React.FC = () => {
