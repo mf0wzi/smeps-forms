@@ -1,14 +1,31 @@
 // app/components/layouts/MainLayout.tsx
 import type { ReactNode } from "react";
-import NavbarClient from "@/components/section/navbar-client";
-import Footer from "@/components/section/footer-client";
+import { AppSidebar } from "@/components/app-sidebar"
+import { SiteHeader } from "@/components/site-header"
+import {
+  SidebarInset,
+  SidebarProvider,
+} from "@/components/ui/sidebar"
 
 export default function MainLayout({ children, user }: { children: ReactNode; user?: { id: string; email?: string | null } }) {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
-      <NavbarClient />
-      <main className="max-w-6xl mx-auto p-6 md:p-8">{children}</main>
-      <Footer />
-    </div>
+    <SidebarProvider
+      style={
+        {
+          // these match the shadcn block; tweak as you like
+          "--sidebar-width": "calc(var(--spacing) * 72)",
+          "--header-height": "calc(var(--spacing) * 12)",
+        } as React.CSSProperties
+      }
+    >
+      <AppSidebar variant="inset" />
+      <SidebarInset>
+        <SiteHeader />
+        <div className="flex flex-1 flex-col">
+          {/* Your pages will render here inside the shell */}
+          {children}
+        </div>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }
